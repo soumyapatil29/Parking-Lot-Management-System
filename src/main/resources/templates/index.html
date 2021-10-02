@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layouts/layout" th:with="activeTab='home'">
+<head>
+    <title>home</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js" integrity="sha256-L3S3EDEk31HcLA5C6T2ovHvOcD80+fgqaCDt2BAi92o=" crossorigin="anonymous"></script>
+    <script type="text/javascript" th:src="@{/js/index.js}"></script>
+</head>
+<body>
+    <div layout:fragment="content">
+        <div th:replace="fragments/alert :: alert"></div>
+        <div class="row">
+        <div class="col-lg-6 col-sm-10">
+                <div class="jumbotron jumbotron-fluid element">
+                    <h1>Arrival</h1>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Registration plate</span>
+                        </div>
+                        <input id="registerInput" type="text" class="form-control" required="required"/>
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Color</span>
+                        </div>
+                        <input class="form-control" id="colorInput" />
+                    </div>
+                    <button id="registerButton" type="button" class="btn btn-block btn-danger">Register new car into the lot</button>
+                </div>
+            </div>
+            <div class="col-lg-6 col-sm-10">
+               <div class="jumbotron jumbotron-fluid element">
+                    <h1>Departure</h1>
+                    <div id="checkout">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Registration plate</span>
+                            </div>
+                            <input id="checkoutInput" type="text" class="form-control"/>
+                        </div>
+                        <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Color</span>
+                        </div>
+                        <input id="colorCheckoutInput" type="text" class="form-control" />
+                    </div>
+                        <button id="checkoutButton" type="button" class="btn btn-block btn-danger">Checkout</button>
+                    </div>
+                    <div id="release" class="collapse">
+                        <p class="lead">Registration plate: <strong><span id="checkoutRegistration"></span></strong></p>
+                        <p class="lead">Arrival time: <strong><span id="checkoutArrival"></span></strong></p>
+                        <p class="lead">Departure time: <strong><span id="checkoutDeparture"></span></strong></p>
+                        <p class="lead">Amount due: <strong><span id="checkoutFee"></span> &dollar;</strong></p>
+                        <div class="btn-group d-flex" role="group">
+                            <button id="releaseButton" class="btn btn-success w-100">Release</button>
+                            <button id="cancelReleaseButton" class="btn btn-danger w-100">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+                </div>
+        </div>
+        <div th:replace="fragments/alert :: alert"></div>
+        <div class="row">
+            <div class="col-lg-6 col-sm-12">
+                <div class="jumbotron jumbotron-fluid element">
+                    <h1>Parking area status <span id="full" class="invisible badge badge-danger">Full</span></h1>
+                    <p class="lead">Capacity: <strong><span id="capacity"></span></strong></p>
+                    <p class="lead">Occupied: <strong><span id="occupied"></span></strong></p>
+                    <p class="lead">Free: <strong><span id="free"></span></strong></p>
+                    <canvas id="chart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
